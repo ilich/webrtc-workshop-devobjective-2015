@@ -1,0 +1,41 @@
+<!-- 
+	http://stackoverflow.com/questions/28939484/webrtc-screen-sharing-and-recording-on-linux-server
+
+	Firefox
+	=========================================================================
+
+	The flags to set in about:config are:
+
+    media.getusermedia.screensharing.enabled: true
+    media.getusermedia.screensharing.allowed_domains: append your domain here (localhost in this case)
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<video id='my-screen' controls width="800"></video>
+
+	<script src="adapter.js"></script>
+	<script>
+		function captureScreen() {
+			getUserMedia({
+				audio: false,
+				video: {
+					mozMediaSource: 'window',
+					mediaSource: 'window'
+				}
+			}, function (stream) {
+				var player= document.getElementById('my-screen');
+				attachMediaStream(player, stream);
+				player.play();
+			}, function () {
+				alert('Cannot captchure screen. Please check your browser settings and try again.');
+			})
+		}
+
+		window.onload = captureScreen;
+	</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{{>header}}
+
+<div id="login" class="container has-webrtc">
+	<div class="row">
+		<div class="col-md-4">
+			<form>
+				<div class="form-group">
+					<label for="room-id">Please enter a room name:</label>
+					<input type="text" class="form-control" id="room-id" value="{{roomId}}">
+				</div>
+				<button type="button" class="btn btn-primary" id="join-chat">JOIN</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="chat" class="container has-webrtc">
+	<div class="row">
+		<div class="col-md-12">
+			<p id="chat-url-text">You video chat URL is <a id="chat-url" href="#"></a></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<video controls width="100%" id="local-video">
+		</div>
+		<div class="col-md-6">
+			<video controls width="100%" id="remote-video">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="chat-window">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="message-form">
+				<form>
+					<div class="form-group">
+						<input type="text" class="form-control" id="message" placeholder="Type your message here">
+					</div>
+					<button type="button" id="send-message" class="btn btn-primary" disabled>SEND MESSAGE</button>
+				</form>
+			</div>
+			<div id="file-form">
+				<div class="progress">
+					<div class="progress-bar" id="progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+				</div>
+
+				<div class="form-group">
+					<input type="file" id="file">
+				</div>
+				<button type="button" id="send-file" class="btn btn-primary" disabled>SEND FILE</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="webrtc-not-supported" class="container">
+	<h1>This browser does not support WebRTC. Plewase visit <a href="http://webrtc.org">WebRTC.org</a> for more info.</h1>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/webrtc-chat.js"></script>
+
+{{>footer}}
