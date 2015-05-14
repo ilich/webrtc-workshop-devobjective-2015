@@ -185,7 +185,7 @@
 					receivedDataSize = 0;
 
 				// We use Signalling Channel to transfer information about file name and 
-				// size. Instead of using main signallin server we could create a signalling
+				// size. Instead of using main signalling server we could create a signalling
 				// data channel to send file name and size
 
 				me.signalServer.on('send-file', function (fileInfo) {
